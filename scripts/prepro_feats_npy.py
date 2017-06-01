@@ -48,7 +48,7 @@ import misc.resnet as resnet
 
 def main(params):
   net = getattr(resnet, params['model'])()
-  net.load_state_dict(torch.load('/home-nfs/rluo/rluo/model/pytorch-resnet/'+params['model']+'.pth'))
+  net.load_state_dict(torch.load('data/model/'+params['model']+'.pth'))
   my_resnet = myResnet(net)
   my_resnet.cuda()
   my_resnet.eval()
@@ -84,7 +84,7 @@ def main(params):
 
     if i % 1000 == 0:
       print 'processing %d/%d (%.2f%% done)' % (i, N, i*100.0/N)
-  print 'wrote ', params['ourput_dir']
+  print 'wrote ', params['output_dir']
 
 if __name__ == "__main__":
 
